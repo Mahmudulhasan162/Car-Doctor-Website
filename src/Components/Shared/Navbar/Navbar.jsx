@@ -36,7 +36,7 @@ const Navbar = () => {
     <BsCart></BsCart>
     <IoSearchOutline/>
     </div>
-    <a className="px-6 py-3 border border-[#FF3811] text-[#FF3811] text-lg font-semibold rounded-md">Appointment</a>
+    <button className="btn btn-outline btn-error text-lg">Appointment</button>
   </div>
 </div>
         </div>

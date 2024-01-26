@@ -1,4 +1,8 @@
-import logo from "../../../assets/icons/logo.svg"
+import logo from "../../../assets/icons/logo.svg";
+import { FaGoogle } from "react-icons/fa";
+import { IoLogoInstagram } from "react-icons/io5";
+import { FaTwitter } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
 const Footer = () => {
     return (
         <div>
@@ -6,6 +10,12 @@ const Footer = () => {
   <aside>
     <img className="text-white" src={logo} alt="" />
     <p>Edwin Diaz is a software and web <br /> technologies engineer, a life coach <br />trainer who is also a serial .</p>
+    <div className="text-xl rounded-full flex space-x-5 mt-8">
+    <FaGoogle/>
+    <IoLogoInstagram/>
+    <FaTwitter/>
+    <FaLinkedin/>
+    </div>
   </aside> 
   <nav>
     <header className="footer-title text-xl">About</header> 
