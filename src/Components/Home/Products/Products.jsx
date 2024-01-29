@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useEffect, useState } from "react";
 import ProductsCard from "./ProductsCard";
 
@@ -16,7 +17,7 @@ const Products = () => {
         <h1 className="text-xl font-bold text-[#FF3811]">Popular Products</h1>
         <h1 className="text-5xl font-bold text-black">Browse Our Products</h1>
         <p className="w-2/4 mx-auto text-base font-normal text-[#737373]">
-          t Car engine products encompass a range of components and systems
+          Car engine products encompass a range of components and systems
           vital for an automobile's propulsion. These include internal
           combustion engines, electric motors, fuel delivery systems, cooling
           systems, and exhaust systems. They are designed to generate power
