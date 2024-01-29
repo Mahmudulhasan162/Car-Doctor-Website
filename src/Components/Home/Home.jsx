@@ -4,6 +4,7 @@ import Contact from "./Contact/Contact";
 import Products from "./Products/Products";
 import Service from "./Service/Service";
 import Team from "./Team/Team";
+import CoreFeatures from "./CoreFeatures/CoreFeatures";
 
 
 const Home = () => {
@@ -15,6 +16,7 @@ const Home = () => {
            <Contact></Contact>
            <Products></Products>
            <Team></Team>
+           <CoreFeatures></CoreFeatures>
         </div>
     );
 };
