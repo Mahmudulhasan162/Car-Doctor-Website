@@ -1,47 +1,57 @@
 /* eslint-disable react/no-unescaped-entities */
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import login from "../../assets/images/login/login.svg";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Login = () => {
-  const {signIn, googleLogIn} = useContext(AuthContext)
+  const {Login, googleLogIn} = useContext(AuthContext);
+  const [email, setEmail]= useState(" ");
+  const [password, setPassword]= useState(" ");
   const Location= useLocation(); 
   const Navigate = useNavigate(); 
 
     const handleGoogleLogIn = ()=>{
-      googleLogIn()
-      Swal.fire({
-        title: "Logged In",
-        text: "You've successfully logged in",
-        icon: "success"
-      }); 
-      Navigate(Location?.state ? Location.state : "/")
-      .then(result => {
-        console.log(result.user);
+      googleLogIn().then((result)=>{
+        Swal.fire({
+          title: "Logged In",
+          text: "You've successfully logged in",
+          icon: "success"
+        }); 
+        Navigate(Location?.state ? Location.state : "/")
+        console.log(result.user)
+        
       })
       .catch(error => {
         console.error(error);
       })
+     
     }
     const handleLogin = event =>{
         event.preventDefault();
-        const form = event.target;
-        const email= form.email.value;
-        const password= form.password.value;
-        console.log(email,password);
-      
-        signIn(email,password)
-        .then(result => {
+        
+        if(email, password){
+          Login(email,password).then(result => {
+            Swal.fire({
+              title: "Logged In",
+              text: "You've successfully logged in",
+              icon: "success"
+            })
           const user= result.user;
-          console.log(user);
+          console.log(user)
+         
         })
         .catch(error => {
           console.error(error);
+          Swal.fire({
+            title: "User Not Found",
+            text: "You're Not a Registered User",
+            icon: "error"
+          })
         })
-        
-    }
+        }
+      }
   return (
     <div className="hero">
       <div className="hero-content flex-col lg:flex-row gap-16">
@@ -49,7 +59,6 @@ const Login = () => {
           <img src={login} alt="" />
         </div>
         <div className="card shrink-0 w-full max-w-sm border border-[#D0D0D0] bg-base-100">
-          <form className="card-body" onSubmit={handleLogin}>
             <div className="form-control">
             <h1 className="text-4xl font-semibold text-center mb-10">
                 Login
@@ -58,6 +67,7 @@ const Login = () => {
                 <span className="label-text text-lg font-semibold">Email</span>
               </label>
               <input
+              onChange={(e)=>setEmail(e.target.value)}
                 type="email"
                 name="email"
                 placeholder="Your email"
@@ -70,6 +80,7 @@ const Login = () => {
                 <span className="label-text text-lg font-semibold">Confirm Password</span>
               </label>
               <input
+              onChange={(e)=>setPassword(e.target.value)}
                 type="password"
                 name="password"
                 placeholder="Your password"
@@ -77,12 +88,10 @@ const Login = () => {
                 required
               />
             </div>
-            <div className="form-control mt-6">
-              <input type="submit" value="Sign In" className="btn text-white bg-[#FF3811]"></input>
-            </div>
+            <button onClick={handleLogin} className="btn text-white bg-[#FF3811] mt-6">Sign In</button>
             <div className="text-center mx-auto">
               <h1>Or Sign In with</h1>
-              <div className="flex items-center gap-5 my-5 text-center ">
+              <div className="flex items-center gap-5 my-5 justify-center">
                 
                 <svg
                   className="bg-[#F5F5F8] rounded-full "
@@ -156,11 +165,9 @@ const Login = () => {
                   </defs>
                 </svg>
                 </button>
-                <button onClick={handleGoogleLogIn}>Google</button>
               </div>
               <h1 className="text-lg font-normal text-[#737373]">Don't have an account? <NavLink to="/signup"><span className="text-lg font-semibold text-[#FF3811]">Sign Up</span></NavLink></h1>
             </div>
-          </form>
         </div>
       </div>
     </div>

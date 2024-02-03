@@ -46,7 +46,7 @@ const SignUp = () => {
           <img src={login} alt="" />
         </div>
         <div className="card shrink-0 w-full max-w-sm border border-[#D0D0D0] bg-base-100">
-          <form className="card-body" onSubmit={handleSignUp}>
+          <form className="card-body">
           <div className="form-control">
           <h1 className="text-4xl font-semibold text-center mb-10">
                 Sign Up
@@ -89,12 +89,10 @@ const SignUp = () => {
                 required
               />
             </div>
-            <div className="form-control mt-6">
-              <input type="submit" value="Sign Up" className="btn text-white bg-[#FF3811]"></input>
-            </div>
+            <button onClick={handleSignUp} className="btn text-white bg-[#FF3811] mt-6">Sign Up</button>
             <div className="text-center mx-auto">
               <h1>Or Sign Up with</h1>
-              <div className="flex items-center gap-5 my-5 text-center ">
+              <div className="flex items-center gap-5 my-5 justify-center ">
                 
                 <svg
                   className="bg-[#F5F5F8] rounded-full "
